@@ -6,5 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.less']
 })
 export class AppComponent {
-  title = 'carrot-sprit';
+  isCollapsed = false;
+  menus = [
+    {
+      name: "心情记录",
+      path: '/sprits'
+    },
+    {
+      name: "管理",
+      path: '/manage'
+    }
+  ]
 }
