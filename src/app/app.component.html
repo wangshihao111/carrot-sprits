@@ -20,7 +20,7 @@
       [nzInlineCollapsed]="isCollapsed"
     >
     <li *ngFor="let menu of menus" nz-menu-item nzMatchRouter>
-      <a [routerLink]="menu.path">{{menu.name}} {{menu.path}}</a>
+      <a [routerLink]="menu.path">{{menu.name}}</a>
     </li>
     </ul>
   </nz-sider>
@@ -36,7 +36,7 @@
         </span>
       </div>
     </nz-header>
-    <nz-content>
+    <nz-content style="margin: 8px;">
       <div class="inner-content">
         <router-outlet></router-outlet>
       </div>
