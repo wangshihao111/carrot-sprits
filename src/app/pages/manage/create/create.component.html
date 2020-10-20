@@ -1,1 +1,21 @@
-<p>create works!</p>
+<div nz-row nzJustify="space-between">
+  <div nz-col [nzSpan]="12">
+    <nz-form-item *ngIf="!isDetail">
+      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="create-title"
+        >标题</nz-form-label
+      >
+      <nz-form-control [nzSpan]="14">
+        <input nz-input id="create-title" type="text" #title (input)="handleTitleChange(title.value)" />
+      </nz-form-control>
+    </nz-form-item>
+    <h3 *ngIf="isDetail">{{form.title}}</h3>
+  </div>
+  <div nz-col>
+    <button *ngIf="isDetail" nz-button nzType="primary" (click)="isDetail=false">编辑</button>
+    <button *ngIf="!isDetail" [disabled]="!(form.title && form.content)" nz-button nzType="primary" (click)="handleSubmit()">保存</button>
+  </div>
+</div>
+<div class="rich-editor-wrapper">
+  <quill-editor *ngIf="!isDetail" (onContentChanged)="handleRichChange($event)"> </quill-editor>
+  <quill-view *ngIf="isDetail" [content]="form.content" format="text" theme="snow"></quill-view>
+</div>

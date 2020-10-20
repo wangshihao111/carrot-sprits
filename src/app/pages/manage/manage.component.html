@@ -1,23 +1,25 @@
 <div nz-row nzJustify="space-between" class="header-actions">
-  <form nz-form [formGroup]="filterForm" (input)="handleChange()">
-    <nz-form-item>
-      <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="title">标题</nz-form-label>
-      <nz-form-control
-        [nzSm]="14"
-        [nzXs]="24"
-        nzErrorTip="The input is not valid E-mail!"
-      >
-        <nz-input-group [nzSuffix]="suffixIconSearch">
-          <input nz-input formControlName="title" id="title" />
-        </nz-input-group>
-      </nz-form-control>
-      <ng-template #suffixIconSearch>
-        <i nz-icon nzType="search"></i>
-      </ng-template>
-    </nz-form-item>
-  </form>
+  <div nz-col [nzSpan]="12">
+    <form nz-form [formGroup]="filterForm" (input)="handleChange()">
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="title">标题</nz-form-label>
+        <nz-form-control
+          [nzSm]="14"
+          [nzXs]="24"
+          nzErrorTip="The input is not valid E-mail!"
+        >
+          <nz-input-group [nzSuffix]="suffixIconSearch">
+            <input nz-input formControlName="title" id="title" />
+          </nz-input-group>
+        </nz-form-control>
+        <ng-template #suffixIconSearch>
+          <i nz-icon nzType="search"></i>
+        </ng-template>
+      </nz-form-item>
+    </form>
+  </div>
   <div>
-    <button nz-button nzType="primary"><a routerLink="create">新建</a></button>
+    <button nz-button nzType="primary"><a [routerLink]="['create']">新建</a></button>
   </div>
 </div>
 <nz-table #basicTable [nzData]="manageService.spritsList">
@@ -35,6 +37,8 @@
       <td>{{ data.createAt }}</td>
       <td>{{ data.lastUpdate }}</td>
       <td>
+        <a [routerLink]="['detail']">查看</a>
+        <nz-divider nzType="vertical"></nz-divider>
         <a>编辑</a>
         <nz-divider nzType="vertical"></nz-divider>
         <a>删除</a>
